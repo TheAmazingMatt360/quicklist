@@ -44,4 +44,25 @@ header
         margin-inline: auto;
         margin-bottom: 3rem;
     }
+
+    button
+    {
+        border: none;
+        background: none;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        font-weight: 600;
+        font-weight: 1.6rem;
+        color: var(--color-brand);
+        cursor: pointer;
+    }
+
+    h1
+    {
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: var(--content-primary);
+        line-height: 3.2rem;
+        
+    }
 }
