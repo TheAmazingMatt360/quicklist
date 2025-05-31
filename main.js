@@ -49,8 +49,14 @@ function showItensList()
 function removeItem(itemName)
 {
     const itemIndex = itens.findIndex((item) => item.name === itemName)
+    const divWarning = document.querySelector(".warning")
 
-    console.log(itemIndex)
+    divWarning.classList.remove("hide-warning")
+
+    setTimeout(() =>
+    {
+        divWarning.classList.add("hide-warning")
+    },4000)
 
     if(itemIndex !== -1)
     {
