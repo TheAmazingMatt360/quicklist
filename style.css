@@ -184,5 +184,21 @@ main
             }
         }
 
+        button
+        {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            
+            img
+            {
+                width: 1.6rem;
+                opacity: .7;
+            }
+        }
+
     }
 }
