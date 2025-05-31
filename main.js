@@ -66,6 +66,11 @@ function removeItem(itemName)
     showItensList()
 }
 
+function addHideWarning()
+{
+    document.querySelector(".warning").classList.add("hide-warning")
+}
+
 function checkItem(index)
 {
     itens[index].checked = !itens[index].checked
