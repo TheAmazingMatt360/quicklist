@@ -146,10 +146,41 @@ main
             display: flex;
             align-items: center;
             gap: 1.6rem;
+        }
 
-            input
+        input
+        {
+            display: none;
+            cursor: pointer;
+        }
+
+        label
+        {
+            cursor: pointer;
+        }
+
+        .custom-checkbox
+        {
+            width: 2.4rem;
+            height: 2.4rem;
+            border: 2px solid var(--border-primary);
+            border-radius: 0.8rem;
+            cursor: pointer;
+
+        }
+
+        div:has(input:checked) .custom-checkbox
+        {
+            .custom-checkbox
             {
-                cursor: pointer;
+            background: var(--color-brand);
+            border: 1px solid var(--color-brand);
+            transition: background .2s ease;
+            }
+
+            label
+            {
+                text-decoration: line-through;
             }
         }
 
