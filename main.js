@@ -44,6 +44,8 @@ function showItensList()
 
         `
     })
+
+    localStorage.setItem("itens",JSON.stringify(itens))
 }
 
 function removeItem(itemName)
@@ -71,7 +73,7 @@ function addHideWarning()
     document.querySelector(".warning").classList.add("hide-warning")
 }
 
-function checkItem(index)
+function checkItem(itemName)
 {
     const item = itens.find((item) => item.name === itemName)
     itens[index].checked = !itens[index].checked
@@ -87,3 +89,18 @@ function checkItem(index)
 
     showItensList()
 }
+
+function verifyLocalStorageItens()
+{
+    const localStorageItens = JSON.parse(localStorage.getItem("itens"))
+
+    if(localStorageItens)
+    {
+        itens = JSON.parse(localStorageItens)
+        showItensList()
+    }
+
+    showItensList()
+}
+
+verifyLocalStorageItens()
