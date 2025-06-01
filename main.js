@@ -4,6 +4,12 @@ function addItem()
 {
     const itemName = document.querySelector("#item").value
 
+    if (itenName = "" )
+    {
+        alert("Digite um item valido!")
+        return
+    }
+
     const item =
     {
         name: itemName,
