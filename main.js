@@ -23,6 +23,8 @@ function showItensList()
     const list = document.querySelector(".list")
     selectionList.textContent = ""
 
+    itens.sort((itenA,itemB) => Number(itemA.checked) - Number(itenB.checked))
+
     itens.map((item,index) =>
     {
         selectionList.InnerHTML += `
