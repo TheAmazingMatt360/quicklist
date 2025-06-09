@@ -1,114 +1,87 @@
-const itens = [];
+let items = []
+let a = []; 
 
-function addItem()
-{
+function addItem() {
     const itemName = document.querySelector("#item").value
 
-    if (itenName = "" )
-    {
-        alert("Digite um item valido!")
-        return
+    if (itemName === "") {
+      alert("Digite um item válido!")
+      return
     }
 
-    const item =
-    {
-        name: itemName,
-        checked: false
+    const item ={
+       name: itemName,
+       checked: false
     }
 
-    itens.push(item)
+    items.push(item)
 
-    document.querySelector("#item").value = ""
+    document.querySelector("#item").value + ""
 
-    showItensList()
-    
+    showItemsList()
 }
 
-function showItensList()
-{
-    const list = document.querySelector(".list")
-    selectionList.textContent = ""
+function showItemsList() {
+    const sectionList = document.querySelector(".List");
 
-    itens.sort((itenA,itemB) => Number(itemA.checked) - Number(itenB.checked))
+    sectionList.innerHTML = ""
 
-    itens.map((item,index) =>
-    {
-        selectionList.InnerHTML += `
-        
-                    <div class="item">
+    items.sort((itemA, itemB) => Number(a.checked) - Number(itemB.checked));
+
+     items.map((item, index) => {
+        sectionList.innerHTML += `
+         <div class="item">
                 <div>
-                    <input type="checkbox" name="list" id="item-${index}" ${item.checked && "checked"}>
-
+                    <input type="checkbox" name="list" id="item=${index}" ${item.checked === true ? "Checked" : "" }>
                     <div class="custom-checkbox" onclick="checkItem('${item.name}')">
                         <img src="./assets/checked.svg" alt="checked">
                     </div>
-
-                    <label for="item-${index}"> onclick="checkItem('${item.name}')">${item.name}</label>
+                    <label for="item=${index}"onclick="checkItem('${item.name}')">${item.name}</label>
                 </div>
-                <button onlick="removeItem(${item.name})">
-                <img src="assets/trash-icon.svg" alt="">
+
+                <button onclick="removeItem('${item.name}')">
+                    <img src="./assets/trash-icon.svg" alt="trash icon">
                 </button>
             </div>
+         `
+})
 
-        `
-    })
-
-    localStorage.setItem("itens",JSON.stringify(itens))
+     localStorage.setItem("items", JSON.stringify(items))
 }
 
-function removeItem(itemName)
-{
-    const itemIndex = itens.findIndex((item) => item.name === itemName)
+function checkItem(itemName) {
+const item = items.find((item) => item.name === itemName)
+item.checked = !item.checked
+showItemsList()
+}
+
+function removeItem(itemName) {
+    const itemIndex = items.findIndex((item) => item.name === itemName)
     const divWarning = document.querySelector(".warning")
 
     divWarning.classList.remove("hide-warning")
 
-    setTimeout(() =>
-    {
-        divWarning.classList.add("hide-warning")
-    },4000)
-
-    if(itemIndex !== -1)
-    {
-        itens.splice(itemIndex,1)
-    }
-
-    showItensList()
+      setTimeout(() => {
+      divWarning.classList.add("hide-warning")
+     }, 4000)
+   
+    if (itemIndex !== -1) {
+       items.splice(itemIndex, 1)
+     }
+      showItemsList()
 }
 
-function addHideWarning()
-{
-    document.querySelector(".warning").classList.add("hide-warning")
+function addHideWarningClass() {
+   document.querySelector(".warning").classList.add("hide-warning")
 }
 
-function checkItem(itemName)
-{
-    const item = itens.find((item) => item.name === itemName)
-    itens[index].checked = !itens[index].checked
+function verifyLocalStorageItems() {
+  const localStorageItems = localStorage.getItem("items");
 
-    if (item.checked === true)
-    {
-        item.checked = false
-    }
-    else
-    {
-        item.checked = true
-    }
-
-    showItensList()
+  if (localStorageItems) {
+    items = JSON.parse(localStorageItems);
+    showItemsList();
+  }
 }
 
-function verifyLocalStorageItens()
-{
-    const localStorageItens = JSON.parse(localStorage.getItem("itens"))
-
-    if(localStorageItens)
-    {
-        itens = JSON.parse(localStorageItens)
-        showItensList()
-    }
-
-    showItensList()
-}
-
-verifyLocalStorageItens()
+verifyLocalStorageItems();
